@@ -7,7 +7,7 @@ class CommentList extends React.Component {
 
             return (
                 <div key={comment.id}>
-                    <img src={comment.user.avatar_url}/>
+                    <img src={comment.user.avatar_url} className={comment.author_association == 'MEMBER' ? 'author' : null}/>
                     {comment.body}
                 </div>
             );
