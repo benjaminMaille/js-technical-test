@@ -57,3 +57,33 @@ Ajouter un textarea sous la discussion pour permettre d'ajouter un commentaire. 
 ### Amélioration UI
 
 Accompagner les changements d'affichage avec des animations (apparition / disparition des messages, mise à jour du graphique).
+
+---
+
+# Mon avancée
+
+### Règles
+
+* temps : 4h
+* Framework : React (create-react-app)
+* Design responsive, avec le Desktop et le Smartphone en cibles principales
+
+## Fonctionnalités principales
+
+### Le fil de discussion
+
+[x] Afficher les messages d'un ticket Github (ex : https://github.com/nodejs/node/issues/6867).
+[] l'url devrait donc contenir le chemin vers le ticket
+[x] passer par un formulaire pour indiquer l'url
+
+Dans un premier temps, uniquement afficher :
+[x] le titre
+[x] la discussion
+[x] les avatars
+[x] distinction entre l'auteur et les autres
+
+### Les filtres
+
+[] liste des participants
+[] masquer certains participants. (checkboxes).
+[] Masquer un participant fait disparaître ses messages du fil de discussion.
