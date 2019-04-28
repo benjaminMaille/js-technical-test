@@ -9,10 +9,14 @@ class App extends React.Component {
         super(props);
     }
 
+    onSearch(query) {
+        console.log('App log',query);
+    }
+
     render() {
         return (
             <div>
-                <SearchForm />
+                <SearchForm onSubmit={this.onSearch} />
                 <CommentList />
             </div>
         );

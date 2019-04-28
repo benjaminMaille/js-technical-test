@@ -11,7 +11,7 @@ class SearchForm extends React.Component {
     onFormSubmit(event) {
         event.preventDefault();
 
-        console.log(this.state.query);
+        this.props.onSubmit(this.state.query);
     }
 
     render() {
