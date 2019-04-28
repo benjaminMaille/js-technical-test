@@ -1,8 +1,6 @@
 import React from 'react';
 
-import CommentList from './CommentList';
-
-class App extends React.Component {
+class CommentList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,9 +8,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <CommentList />
+            <div>CommentList here !</div>
         );
     }
 }
 
-export default App;
+export default CommentList;
