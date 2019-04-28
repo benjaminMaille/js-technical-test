@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 import SearchForm from './SearchForm';
 import CommentList from './CommentList';
@@ -69,9 +70,14 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <SearchForm onSubmit={query => this.onSearch(query)} />
-                <h1>{this.state.title}</h1>
-                <CommentList comments={this.state.comments} users={this.state.users}/>
+                <header>
+                    <SearchForm onSubmit={query => this.onSearch(query)} />
+                    <h1>{this.state.title}</h1>
+                </header>
+                <main>
+                    <aside>User list</aside>
+                    <CommentList comments={this.state.comments} users={this.state.users}/>
+                </main>
             </div>
         );
     }
