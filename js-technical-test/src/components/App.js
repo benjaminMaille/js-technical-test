@@ -21,12 +21,20 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {comments: []};
+        this.state = {
+            title: '',
+            comments: []
+        };
     }
 
     onSearch(query) {
-        load(
-            query,
+        load(query,
+            response => {
+                console.log(response);
+                this.setState({title: response.title});
+            }
+        );
+        load(query + '/comments',
             response => {
                 console.log(response);
                 this.setState({comments: response});
@@ -38,6 +46,7 @@ class App extends React.Component {
         return (
             <div>
                 <SearchForm onSubmit={query => this.onSearch(query)} />
+                <h1>{this.state.title}</h1>
                 <CommentList comments={this.state.comments} />
             </div>
         );
