@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SearchForm from './SearchForm';
 import CommentList from './CommentList';
 
 class App extends React.Component {
@@ -10,7 +11,10 @@ class App extends React.Component {
 
     render() {
         return (
-            <CommentList />
+            <div>
+                <SearchForm />
+                <CommentList />
+            </div>
         );
     }
 }
