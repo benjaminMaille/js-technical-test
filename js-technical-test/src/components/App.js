@@ -23,9 +23,33 @@ class App extends React.Component {
 
         this.state = {
             title: '',
-            comments: []
+            comments: [],
+            users: []
         };
     }
+
+    // componentDidUpdate() {
+    //     if (this.state.comments.length && !this.state.users.length) {
+    //         console.log(this.state.comments);
+
+    //         let users = this.state.comments
+    //             .filter((elem, pos, arr) => {
+    //                 console.log(elem);
+    //                 console.log(pos);
+    //                 console.log(arr);
+    //             });
+
+    //         console.log('USER',users);
+
+    //         // for (let comment of this.state.comments) {
+    //         //     load(comment.user.url,
+    //         //         response => {
+    //         //             this.setState({users: this.state.users.concat(response)});
+    //         //         }
+    //         //     );
+    //         // }
+    //     }
+    // }
 
     onSearch(query) {
         load(query,
@@ -47,7 +71,7 @@ class App extends React.Component {
             <div>
                 <SearchForm onSubmit={query => this.onSearch(query)} />
                 <h1>{this.state.title}</h1>
-                <CommentList comments={this.state.comments} />
+                <CommentList comments={this.state.comments} users={this.state.users}/>
             </div>
         );
     }
