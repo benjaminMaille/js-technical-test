@@ -64,9 +64,9 @@ Accompagner les changements d'affichage avec des animations (apparition / dispar
 
 ### Règles
 
-* temps : 4h
-* Framework : React (create-react-app)
-* Design responsive, avec le Desktop et le Smartphone en cibles principales
+[x] temps : 4h
+[x] Framework : React (create-react-app)
+[] Design responsive, avec le Desktop et le Smartphone en cibles principales
 
 ## Fonctionnalités principales
 
