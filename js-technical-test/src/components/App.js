@@ -24,9 +24,9 @@ class App extends React.Component {
         this.state = {comments: []};
     }
 
-    componentDidMount() {
+    onSearch(query) {
         load(
-            'https://api.github.com/repos/octocat/Hello-World/issues/comments',
+            query,
             response => {
                 console.log(response);
                 this.setState({comments: response});
@@ -34,14 +34,10 @@ class App extends React.Component {
         );
     }
 
-    onSearch(query) {
-        console.log('App log',query);
-    }
-
     render() {
         return (
             <div>
-                <SearchForm onSubmit={this.onSearch} />
+                <SearchForm onSubmit={query => this.onSearch(query)} />
                 <CommentList comments={this.state.comments} />
             </div>
         );

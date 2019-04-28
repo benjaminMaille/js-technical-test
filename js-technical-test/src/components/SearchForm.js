@@ -5,7 +5,7 @@ class SearchForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { query: '' };
+        this.state = { query: 'https://api.github.com/repos/octocat/Hello-World/issues/comments' };
     }
 
     onFormSubmit(event) {
