@@ -3,7 +3,7 @@ import React from 'react';
 class UserList extends React.Component {
 
     render() {
-        const users = this.props.users.map(({id, login, avatar_url, selected}) => {
+        const users = this.props.users.map(({id, login, avatar_url, selected, word_count}) => {
             return (
                 <li key={id} className="User">
                     <input
@@ -11,7 +11,7 @@ class UserList extends React.Component {
                         checked={selected}
                         onChange={() => this.props.onUserVisibilityChange(id)} />
                     <img src={avatar_url} />
-                    {login}
+                    {login} ({word_count})
                 </li>
             );
         });

@@ -37,17 +37,34 @@ class App extends React.Component {
             }
         );
         load(query + '/comments',
-            response => {
+            comments => {
                 this.setState({
-                    comments: response,
-                    users : response
-                        .map((value) => {
-                            value.user.selected = true;
-                            return value.user;
+                    comments: comments,
+                    users : comments
+
+                        // Export users from comments
+                        .map((comment) => {
+
+                            // Add custom parameter
+                            comment.user.selected = true;
+
+                            return comment.user;
                         })
+
+                        // Retrieve an array of unique users
                         .reduce((result, item) => {
                             return !result.find(i => i.id == item.id) ? [...result,item] : result;
                         },[])
+
+                        // Count all words number
+                        .map(user => {
+                            user.word_count = comments.reduce((count, comment) => {
+                                return comment.user.id == user.id
+                                    ? count + comment.body.split(' ').length
+                                    : count
+                            }, 0);
+                            return user;
+                        })
                 });
             }
         );
