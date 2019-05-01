@@ -41,17 +41,38 @@ class App extends React.Component {
                 this.setState({
                     comments: response,
                     users : response
-                        .map(value => value.user)
+                        .map((value) => {
+                            value.user.selected = true;
+                            return value.user;
+                        })
                         .reduce((result, item) => {
                             return !result.find(i => i.id == item.id) ? [...result,item] : result;
                         },[])
                 });
-                console.log(this.state);
             }
         );
     }
 
+    onUserVisibilityChange(userId) {
+        this.setState({
+            users: this.state.users.map(user => {
+                if (user.id == userId) {
+                    user.selected = !user.selected;
+                }
+                return user;
+            })
+        });
+    }
+
     render() {
+
+        // Filtering comments by user visibility
+        const comments = this.state.comments.filter(comment => {
+            return !!this.state.users.find(user => {
+                return user.id == comment.user.id && user.selected;
+            });
+        });
+
         return (
             <div>
                 <header>
@@ -59,8 +80,14 @@ class App extends React.Component {
                     <h1>{this.state.title}</h1>
                 </header>
                 <main>
-                    <aside><UserList users={this.state.users}/></aside>
-                    <CommentList comments={this.state.comments}/>
+                    <aside>
+                        <UserList
+                            users={this.state.users}
+                            onUserVisibilityChange={id => this.onUserVisibilityChange(id)} />
+                    </aside>
+                    <section>
+                        <CommentList comments={comments}/>
+                    </section>
                 </main>
             </div>
         );
