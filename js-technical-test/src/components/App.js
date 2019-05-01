@@ -3,6 +3,7 @@ import './App.css';
 
 import SearchForm from './SearchForm';
 import CommentList from './CommentList';
+import UserList from './UserList';
 
 function load(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -29,40 +30,23 @@ class App extends React.Component {
         };
     }
 
-    // componentDidUpdate() {
-    //     if (this.state.comments.length && !this.state.users.length) {
-    //         console.log(this.state.comments);
-
-    //         let users = this.state.comments
-    //             .filter((elem, pos, arr) => {
-    //                 console.log(elem);
-    //                 console.log(pos);
-    //                 console.log(arr);
-    //             });
-
-    //         console.log('USER',users);
-
-    //         // for (let comment of this.state.comments) {
-    //         //     load(comment.user.url,
-    //         //         response => {
-    //         //             this.setState({users: this.state.users.concat(response)});
-    //         //         }
-    //         //     );
-    //         // }
-    //     }
-    // }
-
     onSearch(query) {
         load(query,
             response => {
-                console.log(response);
                 this.setState({title: response.title});
             }
         );
         load(query + '/comments',
             response => {
-                console.log(response);
-                this.setState({comments: response});
+                this.setState({
+                    comments: response,
+                    users : response
+                        .map(value => value.user)
+                        .reduce((result, item) => {
+                            return !result.find(i => i.id == item.id) ? [...result,item] : result;
+                        },[])
+                });
+                console.log(this.state);
             }
         );
     }
@@ -75,8 +59,8 @@ class App extends React.Component {
                     <h1>{this.state.title}</h1>
                 </header>
                 <main>
-                    <aside>User list</aside>
-                    <CommentList comments={this.state.comments} users={this.state.users}/>
+                    <aside><UserList users={this.state.users}/></aside>
+                    <CommentList comments={this.state.comments}/>
                 </main>
             </div>
         );
