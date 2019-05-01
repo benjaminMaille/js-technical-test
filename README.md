@@ -68,6 +68,11 @@ Accompagner les changements d'affichage avec des animations (apparition / dispar
 - [x] Framework : React (create-react-app)
 - [ ] Design responsive, avec le Desktop et le Smartphone en cibles principales
 
+### Utilisation
+
+- setup : `cd js-technical-test` puis `npm i`
+- start : `npm start`
+
 ## Fonctionnalités principales
 
 ### Le fil de discussion
